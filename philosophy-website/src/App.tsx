@@ -1,10 +1,78 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Concepts from './Concepts';
 import Quiz from './Quiz';
 
-const Header: React.FC = () => {
+// Data for the entire application
+const philosophersData = [
+  {
+    name: 'Plato',
+    bio: 'Plato (c. 428/427 or 424/423 – 348/347 BC) was an Athenian philosopher during the Classical period in Ancient Greece, founder of the Platonist school of thought, and the Academy, the first institution of higher learning in the Western world.',
+    majorWorks: 'The Republic, Phaedo, Symposium, Apology',
+    coreIdeas: 'Theory of Forms, the immortality of the soul, the ideal state ruled by philosopher-kings.',
+    quiz: [
+      {
+        question: "What is the name of the school founded by Plato?",
+        options: ["The Lyceum", "The Academy", "The Garden", "The Stoa"],
+        correctAnswer: "The Academy",
+      },
+      {
+        question: "Which of these is a major work by Plato?",
+        options: ["Nicomachean Ethics", "The Republic", "Meditations", "Leviathan"],
+        correctAnswer: "The Republic",
+      },
+      {
+        question: "What is Plato's theory of ideal forms?",
+        options: [
+          "The idea that all things are made of water",
+          "The concept that there are perfect and unchanging forms of things in a higher reality",
+          "The belief that happiness is the highest good",
+          "The theory that knowledge comes only from sensory experience",
+        ],
+        correctAnswer: "The concept that there are perfect and unchanging forms of things in a higher reality",
+      },
+    ],
+  },
+  {
+    name: 'Aristotle',
+    bio: 'Aristotle (384–322 BC) was a Greek philosopher and polymath during the Classical period in Ancient Greece. Taught by Plato, he was the founder of the Lyceum, the Peripatetic school of philosophy, and the Aristotelian tradition.',
+    majorWorks: 'Nicomachean Ethics, Politics, Metaphysics, Poetics',
+    coreIdeas: 'Virtue ethics, the four causes, the golden mean, logic and syllogism.',
+    quiz: [],
+  },
+  {
+    name: 'Immanuel Kant',
+    bio: 'Immanuel Kant (1724–1804) was a German philosopher and one of the central Enlightenment thinkers. Kant\'s comprehensive and systematic works in epistemology, metaphysics, ethics, and aesthetics have made him one of the most influential figures in modern Western philosophy.',
+    majorWorks: 'Critique of Pure Reason, Groundwork of the Metaphysics of Morals, Critique of Practical Reason',
+    coreIdeas: 'Transcendental idealism, the categorical imperative, the distinction between phenomena and noumena.',
+    quiz: [],
+  },
+];
+
+const conceptsData = [
+  {
+    name: 'Idealism (Chủ nghĩa duy tâm)',
+    description: 'The metaphysical view that reality is all in the mind, that everything that exists is in some way dependent on the mind or consciousness.',
+  },
+  {
+    name: 'Materialism (Chủ nghĩa duy vật)',
+    description: 'The view that all that exists is matter or energy; that all things are composed of material and all phenomena (including consciousness) are the result of material interactions.',
+  },
+  {
+    name: 'Existentialism (Chủ nghĩa hiện sinh)',
+    description: 'A philosophy that emphasizes individual freedom, responsibility, and subjectivity. Existentialists believe that every individual is solely responsible for giving meaning to life and living it passionately and sincerely.',
+  },
+  {
+    name: 'Rationalism (Chủ nghĩa duy lý)',
+    description: 'The epistemological view that regards reason as the chief source and test of knowledge. Rationalists believe that reality itself has an inherently logical structure.',
+  },
+  {
+    name: 'Empiricism (Chủ nghĩa kinh nghiệm)',
+    description: 'The epistemological view that knowledge comes only or primarily from sensory experience. It emphasizes the role of experience and evidence, especially sensory perception, in the formation of ideas.',
+  },
+];
+
+const Header: React.FC<{ onSearch: (term: string) => void }> = ({ onSearch }) => {
   return (
     <header className="bg-dark text-white text-center p-3">
       <h1>Philosophy 101</h1>
@@ -15,7 +83,7 @@ const Header: React.FC = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <a className="nav-link" href="#branches">Branches</a>
               </li>
@@ -29,6 +97,9 @@ const Header: React.FC = () => {
                 <a className="nav-link" href="#contact">Contact</a>
               </li>
             </ul>
+            <form className="d-flex">
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => onSearch(e.target.value)} />
+            </form>
           </div>
         </div>
       </nav>
@@ -105,72 +176,27 @@ const Branches: React.FC = () => {
   );
 }
 
-const Philosophers: React.FC = () => {
-  const platoQuiz = [
-    {
-      question: "What is the name of the school founded by Plato?",
-      options: ["The Lyceum", "The Academy", "The Garden", "The Stoa"],
-      correctAnswer: "The Academy",
-    },
-    {
-      question: "Which of these is a major work by Plato?",
-      options: ["Nicomachean Ethics", "The Republic", "Meditations", "Leviathan"],
-      correctAnswer: "The Republic",
-    },
-    {
-      question: "What is Plato's theory of ideal forms?",
-      options: [
-        "The idea that all things are made of water",
-        "The concept that there are perfect and unchanging forms of things in a higher reality",
-        "The belief that happiness is the highest good",
-        "The theory that knowledge comes only from sensory experience",
-      ],
-      correctAnswer: "The concept that there are perfect and unchanging forms of things in a higher reality",
-    },
-  ];
-
+const Philosophers: React.FC<{ philosophers: typeof philosophersData }> = ({ philosophers }) => {
   return (
     <section id="philosophers" className="p-5">
       <div className="container">
         <h2>Key Philosophers</h2>
         <div className="row">
-          <div className="col-md-4 mb-4">
-            <div className="card h-100">
-              <div className="card-body d-flex flex-column">
-                <h5 className="card-title">Plato</h5>
-                <p className="card-text">Plato (c. 428/427 or 424/423 – 348/347 BC) was an Athenian philosopher during the Classical period in Ancient Greece, founder of the Platonist school of thought, and the Academy, the first institution of higher learning in the Western world.</p>
-                <ul className="list-group list-group-flush mt-auto">
-                  <li className="list-group-item"><strong>Major Works:</strong> <em>The Republic</em>, <em>Phaedo</em>, <em>Symposium</em>, <em>Apology</em>.</li>
-                  <li className="list-group-item"><strong>Core Ideas:</strong> Theory of Forms, the immortality of the soul, the ideal state ruled by philosopher-kings.</li>
-                </ul>
-                <Quiz questions={platoQuiz} />
+          {philosophers.map((philosopher, index) => (
+            <div className="col-md-4 mb-4" key={index}>
+              <div className="card h-100">
+                <div className="card-body d-flex flex-column">
+                  <h5 className="card-title">{philosopher.name}</h5>
+                  <p className="card-text">{philosopher.bio}</p>
+                  <ul className="list-group list-group-flush mt-auto">
+                    <li className="list-group-item"><strong>Major Works:</strong> <em>{philosopher.majorWorks}</em></li>
+                    <li className="list-group-item"><strong>Core Ideas:</strong> {philosopher.coreIdeas}</li>
+                  </ul>
+                  {philosopher.quiz.length > 0 && <Quiz questions={philosopher.quiz} />}
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col-md-4 mb-4">
-            <div className="card h-100">
-              <div className="card-body d-flex flex-column">
-                <h5 className="card-title">Aristotle</h5>
-                <p className="card-text">Aristotle (384–322 BC) was a Greek philosopher and polymath during the Classical period in Ancient Greece. Taught by Plato, he was the founder of the Lyceum, the Peripatetic school of philosophy, and the Aristotelian tradition.</p>
-                <ul className="list-group list-group-flush mt-auto">
-                  <li className="list-group-item"><strong>Major Works:</strong> <em>Nicomachean Ethics</em>, <em>Politics</em>, <em>Metaphysics</em>, <em>Poetics</em>.</li>
-                  <li className="list-group-item"><strong>Core Ideas:</strong> Virtue ethics, the four causes, the golden mean, logic and syllogism.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4 mb-4">
-            <div className="card h-100">
-              <div className="card-body d-flex flex-column">
-                <h5 className="card-title">Immanuel Kant</h5>
-                <p className="card-text">Immanuel Kant (1724–1804) was a German philosopher and one of the central Enlightenment thinkers. Kant's comprehensive and systematic works in epistemology, metaphysics, ethics, and aesthetics have made him one of the most influential figures in modern Western philosophy.</p>
-                <ul className="list-group list-group-flush mt-auto">
-                  <li className="list-group-item"><strong>Major Works:</strong> <em>Critique of Pure Reason</em>, <em>Groundwork of the Metaphysics of Morals</em>, <em>Critique of Practical Reason</em>.</li>
-                  <li className="list-group-item"><strong>Core Ideas:</strong> Transcendental idealism, the categorical imperative, the distinction between phenomena and noumena.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
@@ -202,16 +228,25 @@ const Contact: React.FC = () => {
   );
 }
 
-
 function App() {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredPhilosophers = philosophersData.filter(p =>
+    p.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const filteredConcepts = conceptsData.filter(c =>
+    c.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="App">
-      <Header />
+      <Header onSearch={setSearchTerm} />
       <main>
         <Home />
         <Branches />
-        <Philosophers />
-        <Concepts />
+        <Philosophers philosophers={filteredPhilosophers} />
+        <Concepts concepts={filteredConcepts} />
         <Contact />
       </main>
       <footer className="bg-dark text-white text-center p-3">
