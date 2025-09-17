@@ -1,3 +1,4 @@
+
 import React from 'react';
 import './App.css';
 
@@ -36,7 +37,7 @@ const Home: React.FC = () => {
       <div className="container">
         <h2>Welcome to Philosophy 101</h2>
         <p>This website is dedicated to exploring the fascinating world of philosophy. From the ancient Greeks to modern thinkers, we'll cover the major ideas and figures that have shaped our understanding of the world.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam. Proin sed enim sed lorem cursus volutpat. </p>
+        <p>Use this website to review key concepts, learn about the most influential philosophers, and test your knowledge with our interactive quizzes.</p>
       </div>
     </section>
   );
@@ -51,36 +52,45 @@ const Branches: React.FC = () => {
           <div className="accordion-item">
             <h2 className="accordion-header" id="headingOne">
               <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Metaphysics
+                Metaphysics (Siêu hình học)
               </button>
             </h2>
             <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div className="accordion-body">
-                Metaphysics is the branch of philosophy that examines the fundamental nature of reality, including the relationship between mind and matter, between substance and attribute, and between potentiality and actuality.
+                <p>Metaphysics is the branch of philosophy that examines the fundamental nature of reality, including the relationship between mind and matter, between substance and attribute, and between potentiality and actuality.</p>
+                <strong>Core Concepts:</strong> Being, existence, reality, substance, time, space.<br />
+                <strong>Key Questions:</strong> What is reality? What is the nature of existence? What is the relationship between mind and body?<br />
+                <strong>Representative Philosophers:</strong> Parmenides, Plato, Aristotle, Descartes, Leibniz, Spinoza.
               </div>
             </div>
           </div>
           <div className="accordion-item">
             <h2 className="accordion-header" id="headingTwo">
               <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Epistemology
+                Epistemology (Nhận thức luận)
               </button>
             </h2>
             <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
               <div className="accordion-body">
-                Epistemology is the branch of philosophy concerned with the theory of knowledge. It questions what knowledge is and how it can be acquired, and the extent to which knowledge of any given subject or entity can be acquired.
+                <p>Epistemology is the branch of philosophy concerned with the theory of knowledge. It questions what knowledge is and how it can be acquired, and the extent to which knowledge of any given subject or entity can be acquired.</p>
+                <strong>Core Concepts:</strong> Knowledge, belief, justification, truth, perception, reason.<br />
+                <strong>Key Questions:</strong> What is knowledge? How do we acquire knowledge? What is the difference between belief and knowledge?<br />
+                <strong>Representative Philosophers:</strong> Plato, Aristotle, Descartes, Locke, Hume, Kant.
               </div>
             </div>
           </div>
           <div className="accordion-item">
             <h2 className="accordion-header" id="headingThree">
               <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Ethics
+                Ethics (Đạo đức học)
               </button>
             </h2>
             <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
               <div className="accordion-body">
-                Ethics, or moral philosophy, is a branch of philosophy that involves systematizing, defending, and recommending concepts of right and wrong conduct. It is often divided into three subject areas: meta-ethics, normative ethics, and applied ethics.
+                <p>Ethics, or moral philosophy, is a branch of philosophy that involves systematizing, defending, and recommending concepts of right and wrong conduct. It is often divided into three subject areas: meta-ethics, normative ethics, and applied ethics.</p>
+                <strong>Core Concepts:</strong> Good, evil, right, wrong, virtue, duty, happiness.<br />
+                <strong>Key Questions:</strong> What is the good life? What is the right thing to do? What is justice?<br />
+                <strong>Representative Philosophers:</strong> Socrates, Plato, Aristotle, Epicurus, Aquinas, Kant, Mill.
               </div>
             </div>
           </div>
@@ -96,27 +106,39 @@ const Philosophers: React.FC = () => {
       <div className="container">
         <h2>Key Philosophers</h2>
         <div className="row">
-          <div className="col-md-4">
-            <div className="card">
-              <div className="card-body">
+          <div className="col-md-4 mb-4">
+            <div className="card h-100">
+              <div className="card-body d-flex flex-column">
                 <h5 className="card-title">Plato</h5>
-                <p className="card-text">An Athenian philosopher during the Classical period in Ancient Greece, founder of the Platonist school of thought, and the Academy, the first institution of higher learning in the Western world.</p>
+                <p className="card-text">Plato (c. 428/427 or 424/423 – 348/347 BC) was an Athenian philosopher during the Classical period in Ancient Greece, founder of the Platonist school of thought, and the Academy, the first institution of higher learning in the Western world.</p>
+                <ul className="list-group list-group-flush mt-auto">
+                  <li className="list-group-item"><strong>Major Works:</strong> <em>The Republic</em>, <em>Phaedo</em>, <em>Symposium</em>, <em>Apology</em>.</li>
+                  <li className="list-group-item"><strong>Core Ideas:</strong> Theory of Forms, the immortality of the soul, the ideal state ruled by philosopher-kings.</li>
+                </ul>
               </div>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="card">
-              <div className="card-body">
+          <div className="col-md-4 mb-4">
+            <div className="card h-100">
+              <div className="card-body d-flex flex-column">
                 <h5 className="card-title">Aristotle</h5>
-                <p className="card-text">A Greek philosopher and polymath during the Classical period in Ancient Greece. Taught by Plato, he was the founder of the Lyceum, the Peripatetic school of philosophy, and the Aristotelian tradition.</p>
+                <p className="card-text">Aristotle (384–322 BC) was a Greek philosopher and polymath during the Classical period in Ancient Greece. Taught by Plato, he was the founder of the Lyceum, the Peripatetic school of philosophy, and the Aristotelian tradition.</p>
+                <ul className="list-group list-group-flush mt-auto">
+                  <li className="list-group-item"><strong>Major Works:</strong> <em>Nicomachean Ethics</em>, <em>Politics</em>, <em>Metaphysics</em>, <em>Poetics</em>.</li>
+                  <li className="list-group-item"><strong>Core Ideas:</strong> Virtue ethics, the four causes, the golden mean, logic and syllogism.</li>
+                </ul>
               </div>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="card">
-              <div className="card-body">
+          <div className="col-md-4 mb-4">
+            <div className="card h-100">
+              <div className="card-body d-flex flex-column">
                 <h5 className="card-title">Immanuel Kant</h5>
-                <p className="card-text">A German philosopher and one of the central Enlightenment thinkers. Kant's comprehensive and systematic works in epistemology, metaphysics, ethics, and aesthetics have made him one of the most influential figures in modern Western philosophy.</p>
+                <p className="card-text">Immanuel Kant (1724–1804) was a German philosopher and one of the central Enlightenment thinkers. Kant's comprehensive and systematic works in epistemology, metaphysics, ethics, and aesthetics have made him one of the most influential figures in modern Western philosophy.</p>
+                <ul className="list-group list-group-flush mt-auto">
+                  <li className="list-group-item"><strong>Major Works:</strong> <em>Critique of Pure Reason</em>, <em>Groundwork of the Metaphysics of Morals</em>, <em>Critique of Practical Reason</em>.</li>
+                  <li className="list-group-item"><strong>Core Ideas:</strong> Transcendental idealism, the categorical imperative, the distinction between phenomena and noumena.</li>
+                </ul>
               </div>
             </div>
           </div>
