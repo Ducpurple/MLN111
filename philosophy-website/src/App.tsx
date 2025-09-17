@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import './App.css';
 import Concepts from './Concepts';
@@ -7,6 +8,7 @@ import Quiz from './Quiz';
 const philosophersData = [
   {
     name: 'Plato',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Plato_Silanion_Musei_Capitolini_MC1377.jpg/800px-Plato_Silanion_Musei_Capitolini_MC1377.jpg',
     bio: 'Plato (c. 428/427 or 424/423 – 348/347 BC) was an Athenian philosopher during the Classical period in Ancient Greece, founder of the Platonist school of thought, and the Academy, the first institution of higher learning in the Western world.',
     majorWorks: 'The Republic, Phaedo, Symposium, Apology',
     coreIdeas: 'Theory of Forms, the immortality of the soul, the ideal state ruled by philosopher-kings.',
@@ -35,6 +37,7 @@ const philosophersData = [
   },
   {
     name: 'Aristotle',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Aristotle_Altemps_Inv8575.jpg/800px-Aristotle_Altemps_Inv8575.jpg',
     bio: 'Aristotle (384–322 BC) was a Greek philosopher and polymath during the Classical period in Ancient Greece. Taught by Plato, he was the founder of the Lyceum, the Peripatetic school of philosophy, and the Aristotelian tradition.',
     majorWorks: 'Nicomachean Ethics, Politics, Metaphysics, Poetics',
     coreIdeas: 'Virtue ethics, the four causes, the golden mean, logic and syllogism.',
@@ -42,6 +45,7 @@ const philosophersData = [
   },
   {
     name: 'Immanuel Kant',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/f2/Immanuel_Kant_%28painted_portrait%29.jpg',
     bio: 'Immanuel Kant (1724–1804) was a German philosopher and one of the central Enlightenment thinkers. Kant\'s comprehensive and systematic works in epistemology, metaphysics, ethics, and aesthetics have made him one of the most influential figures in modern Western philosophy.',
     majorWorks: 'Critique of Pure Reason, Groundwork of the Metaphysics of Morals, Critique of Practical Reason',
     coreIdeas: 'Transcendental idealism, the categorical imperative, the distinction between phenomena and noumena.',
@@ -185,6 +189,7 @@ const Philosophers: React.FC<{ philosophers: typeof philosophersData }> = ({ phi
           {philosophers.map((philosopher, index) => (
             <div className="col-md-4 mb-4" key={index}>
               <div className="card h-100">
+                <img src={philosopher.imageUrl} className="card-img-top" alt={philosopher.name} style={{height: '300px', objectFit: 'cover'}} />
                 <div className="card-body d-flex flex-column">
                   <h5 className="card-title">{philosopher.name}</h5>
                   <p className="card-text">{philosopher.bio}</p>
