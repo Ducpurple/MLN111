@@ -1,6 +1,8 @@
+
 import React from 'react';
 import './App.css';
 import Concepts from './Concepts';
+import Quiz from './Quiz';
 
 const Header: React.FC = () => {
   return (
@@ -104,6 +106,29 @@ const Branches: React.FC = () => {
 }
 
 const Philosophers: React.FC = () => {
+  const platoQuiz = [
+    {
+      question: "What is the name of the school founded by Plato?",
+      options: ["The Lyceum", "The Academy", "The Garden", "The Stoa"],
+      correctAnswer: "The Academy",
+    },
+    {
+      question: "Which of these is a major work by Plato?",
+      options: ["Nicomachean Ethics", "The Republic", "Meditations", "Leviathan"],
+      correctAnswer: "The Republic",
+    },
+    {
+      question: "What is Plato's theory of ideal forms?",
+      options: [
+        "The idea that all things are made of water",
+        "The concept that there are perfect and unchanging forms of things in a higher reality",
+        "The belief that happiness is the highest good",
+        "The theory that knowledge comes only from sensory experience",
+      ],
+      correctAnswer: "The concept that there are perfect and unchanging forms of things in a higher reality",
+    },
+  ];
+
   return (
     <section id="philosophers" className="p-5">
       <div className="container">
@@ -118,6 +143,7 @@ const Philosophers: React.FC = () => {
                   <li className="list-group-item"><strong>Major Works:</strong> <em>The Republic</em>, <em>Phaedo</em>, <em>Symposium</em>, <em>Apology</em>.</li>
                   <li className="list-group-item"><strong>Core Ideas:</strong> Theory of Forms, the immortality of the soul, the ideal state ruled by philosopher-kings.</li>
                 </ul>
+                <Quiz questions={platoQuiz} />
               </div>
             </div>
           </div>
