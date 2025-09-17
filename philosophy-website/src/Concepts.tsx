@@ -11,7 +11,7 @@ const Concepts: React.FC<ConceptsProps> = ({ concepts }) => {
   return (
     <section id="concepts" className="p-5 bg-light">
       <div className="container">
-        <h2>Key Philosophical Concepts</h2>
+        <h2>Các khái niệm triết học chính</h2>
         <ul className="list-group">
           {concepts.map((concept, index) => (
             <li className="list-group-item" key={index}>

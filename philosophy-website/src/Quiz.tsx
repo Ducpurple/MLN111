@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 interface QuizProps {
@@ -45,14 +44,14 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
     <div className='quiz mt-4'>
       {showScore ? (
         <div className='score-section'>
-          You scored {score} out of {questions.length}
-          <button onClick={restartQuiz} className="btn btn-primary mt-2">Restart Quiz</button>
+          Bạn đã trả lời đúng {score} trên {questions.length} câu
+          <button onClick={restartQuiz} className="btn btn-primary mt-2">Làm lại</button>
         </div>
       ) : (
         <>
           <div className='question-section'>
             <div className='question-count'>
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
+              <span>Câu hỏi {currentQuestion + 1}</span>/{questions.length}
             </div>
             <div className='question-text'>{questions[currentQuestion].question}</div>
           </div>
@@ -80,7 +79,7 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
             })}
           </div>
           {selectedAnswer && (
-            <button onClick={nextQuestion} className="btn btn-primary mt-2">Next</button>
+            <button onClick={nextQuestion} className="btn btn-primary mt-2">Câu tiếp theo</button>
           )}
         </>
       )}

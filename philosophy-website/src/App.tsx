@@ -1,108 +1,107 @@
-
 import React, { useState } from 'react';
 import './App.css';
 import Concepts from './Concepts';
 import Quiz from './Quiz';
 
-// Data for the entire application
+// Dữ liệu cho toàn bộ ứng dụng
 const philosophersData = [
   {
     name: 'Plato',
     imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Plato_Silanion_Musei_Capitolini_MC1377.jpg/800px-Plato_Silanion_Musei_Capitolini_MC1377.jpg',
-    bio: 'Plato (c. 428/427 or 424/423 – 348/347 BC) was an Athenian philosopher during the Classical period in Ancient Greece, founder of the Platonist school of thought, and the Academy, the first institution of higher learning in the Western world.',
-    majorWorks: 'The Republic, Phaedo, Symposium, Apology',
-    coreIdeas: 'Theory of Forms, the immortality of the soul, the ideal state ruled by philosopher-kings.',
+    bio: 'Plato (khoảng 428/427 hoặc 424/423 – 348/347 TCN) là một nhà triết học người Athens trong thời kỳ Cổ điển ở Hy Lạp cổ đại, người sáng lập trường phái tư tưởng Platon và Học viện, cơ sở giáo dục đại học đầu tiên trong thế giới phương Tây.',
+    majorWorks: 'Cộng hòa, Phaedo, Symposium, Biện hộ',
+    coreIdeas: 'Lý thuyết về các Hình thức, sự bất tử của linh hồn, nhà nước lý tưởng do các vị vua-triết gia cai trị.',
     quiz: [
       {
-        question: "What is the name of the school founded by Plato?",
-        options: ["The Lyceum", "The Academy", "The Garden", "The Stoa"],
-        correctAnswer: "The Academy",
+        question: "Trường học do Plato sáng lập tên là gì?",
+        options: ["Lyceum", "Học viện (The Academy)", "Khu vườn (The Garden)", "Stoa"],
+        correctAnswer: "Học viện (The Academy)",
       },
       {
-        question: "Which of these is a major work by Plato?",
-        options: ["Nicomachean Ethics", "The Republic", "Meditations", "Leviathan"],
-        correctAnswer: "The Republic",
+        question: "Đâu là một tác phẩm chính của Plato?",
+        options: ["Đạo đức học Nicomachean", "Cộng hòa (The Republic)", "Suy tưởng", "Leviathan"],
+        correctAnswer: "Cộng hòa (The Republic)",
       },
       {
-        question: "What is Plato's theory of ideal forms?",
+        question: "Lý thuyết về các Hình thức lý tưởng của Plato là gì?",
         options: [
-          "The idea that all things are made of water",
-          "The concept that there are perfect and unchanging forms of things in a higher reality",
-          "The belief that happiness is the highest good",
-          "The theory that knowledge comes only from sensory experience",
+          "Ý tưởng cho rằng mọi thứ đều được làm từ nước",
+          "Khái niệm cho rằng có những hình thức hoàn hảo và không thay đổi của mọi vật trong một thực tại cao hơn",
+          "Niềm tin rằng hạnh phúc là điều tốt đẹp nhất",
+          "Lý thuyết cho rằng kiến thức chỉ đến từ kinh nghiệm cảm tính",
         ],
-        correctAnswer: "The concept that there are perfect and unchanging forms of things in a higher reality",
+        correctAnswer: "Khái niệm cho rằng có những hình thức hoàn hảo và không thay đổi của mọi vật trong một thực tại cao hơn",
       },
     ],
   },
   {
     name: 'Aristotle',
     imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Aristotle_Altemps_Inv8575.jpg/800px-Aristotle_Altemps_Inv8575.jpg',
-    bio: 'Aristotle (384–322 BC) was a Greek philosopher and polymath during the Classical period in Ancient Greece. Taught by Plato, he was the founder of the Lyceum, the Peripatetic school of philosophy, and the Aristotelian tradition.',
-    majorWorks: 'Nicomachean Ethics, Politics, Metaphysics, Poetics',
-    coreIdeas: 'Virtue ethics, the four causes, the golden mean, logic and syllogism.',
+    bio: 'Aristotle (384–322 TCN) là một nhà triết học và bác học người Hy Lạp trong thời kỳ Cổ điển ở Hy Lạp cổ đại. Được Plato dạy dỗ, ông là người sáng lập Lyceum, trường phái triết học Peripatetic và truyền thống Aristotle.',
+    majorWorks: 'Đạo đức học Nicomachean, Chính trị, Siêu hình học, Thi pháp',
+    coreIdeas: 'Đạo đức đức hạnh, bốn nguyên nhân, trung dung vàng, logic và tam đoạn luận.',
     quiz: [],
   },
   {
     name: 'Immanuel Kant',
     imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/f2/Immanuel_Kant_%28painted_portrait%29.jpg',
-    bio: 'Immanuel Kant (1724–1804) was a German philosopher and one of the central Enlightenment thinkers. Kant\'s comprehensive and systematic works in epistemology, metaphysics, ethics, and aesthetics have made him one of the most influential figures in modern Western philosophy.',
-    majorWorks: 'Critique of Pure Reason, Groundwork of the Metaphysics of Morals, Critique of Practical Reason',
-    coreIdeas: 'Transcendental idealism, the categorical imperative, the distinction between phenomena and noumena.',
+    bio: 'Immanuel Kant (1724–1804) là một nhà triết học người Đức và là một trong những nhà tư tưởng trung tâm của thời kỳ Khai sáng. Các tác phẩm toàn diện và có hệ thống của Kant về nhận thức luận, siêu hình học, đạo đức học và mỹ học đã khiến ông trở thành một trong những nhân vật có ảnh hưởng nhất trong triết học phương Tây hiện đại.',
+    majorWorks: 'Phê phán lý tính thuần túy, Nền tảng siêu hình học của đạo đức, Phê phán lý tính thực tiễn',
+    coreIdeas: 'Chủ nghĩa duy tâm siêu nghiệm, mệnh lệnh phạm trù, sự phân biệt giữa hiện tượng và vật tự nó.',
     quiz: [],
   },
 ];
 
 const conceptsData = [
   {
-    name: 'Idealism (Chủ nghĩa duy tâm)',
-    description: 'The metaphysical view that reality is all in the mind, that everything that exists is in some way dependent on the mind or consciousness.',
+    name: 'Chủ nghĩa duy tâm (Idealism)',
+    description: 'Quan điểm siêu hình cho rằng thực tại hoàn toàn ở trong tâm trí, rằng mọi thứ tồn tại đều phụ thuộc vào tâm trí hoặc ý thức theo một cách nào đó.',
   },
   {
-    name: 'Materialism (Chủ nghĩa duy vật)',
-    description: 'The view that all that exists is matter or energy; that all things are composed of material and all phenomena (including consciousness) are the result of material interactions.',
+    name: 'Chủ nghĩa duy vật (Materialism)',
+    description: 'Quan điểm cho rằng tất cả những gì tồn tại là vật chất hoặc năng lượng; rằng mọi thứ đều được cấu tạo từ vật chất và mọi hiện tượng (bao gồm cả ý thức) là kết quả của sự tương tác vật chất.',
   },
   {
-    name: 'Existentialism (Chủ nghĩa hiện sinh)',
-    description: 'A philosophy that emphasizes individual freedom, responsibility, and subjectivity. Existentialists believe that every individual is solely responsible for giving meaning to life and living it passionately and sincerely.',
+    name: 'Chủ nghĩa hiện sinh (Existentialism)',
+    description: 'Một triết lý nhấn mạnh đến tự do cá nhân, trách nhiệm và tính chủ quan. Những người theo chủ nghĩa hiện sinh tin rằng mỗi cá nhân hoàn toàn chịu trách nhiệm trong việc mang lại ý nghĩa cho cuộc sống và sống một cách đam mê và chân thành.',
   },
   {
-    name: 'Rationalism (Chủ nghĩa duy lý)',
-    description: 'The epistemological view that regards reason as the chief source and test of knowledge. Rationalists believe that reality itself has an inherently logical structure.',
+    name: 'Chủ nghĩa duy lý (Rationalism)',
+    description: 'Quan điểm nhận thức luận coi lý trí là nguồn gốc và thước đo chính của kiến thức. Những người theo chủ nghĩa duy lý tin rằng bản thân thực tại có một cấu trúc logic vốn có.',
   },
   {
-    name: 'Empiricism (Chủ nghĩa kinh nghiệm)',
-    description: 'The epistemological view that knowledge comes only or primarily from sensory experience. It emphasizes the role of experience and evidence, especially sensory perception, in the formation of ideas.',
+    name: 'Chủ nghĩa kinh nghiệm (Empiricism)',
+    description: 'Quan điểm nhận thức luận cho rằng kiến thức chỉ đến từ kinh nghiệm cảm tính. Nó nhấn mạnh vai trò của kinh nghiệm và bằng chứng, đặc biệt là nhận thức cảm tính, trong việc hình thành các ý tưởng.',
   },
 ];
 
 const Header: React.FC<{ onSearch: (term: string) => void }> = ({ onSearch }) => {
   return (
     <header className="bg-dark text-white text-center p-3">
-      <h1>Philosophy 101</h1>
+      <h1>Triết học 101</h1>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#home">Home</a>
+          <a className="navbar-brand" href="#home">Trang chủ</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link" href="#branches">Branches</a>
+                <a className="nav-link" href="#branches">Các nhánh</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#philosophers">Philosophers</a>
+                <a className="nav-link" href="#philosophers">Các triết gia</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#concepts">Concepts</a>
+                <a className="nav-link" href="#concepts">Các khái niệm</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#contact">Contact</a>
+                <a className="nav-link" href="#contact">Liên hệ</a>
               </li>
             </ul>
             <form className="d-flex">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => onSearch(e.target.value)} />
+              <input className="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search" onChange={(e) => onSearch(e.target.value)} />
             </form>
           </div>
         </div>
@@ -115,9 +114,9 @@ const Home: React.FC = () => {
   return (
     <section id="home" className="p-5">
       <div className="container">
-        <h2>Welcome to Philosophy 101</h2>
-        <p>This website is dedicated to exploring the fascinating world of philosophy. From the ancient Greeks to modern thinkers, we'll cover the major ideas and figures that have shaped our understanding of the world.</p>
-        <p>Use this website to review key concepts, learn about the most influential philosophers, and test your knowledge with our interactive quizzes.</p>
+        <h2>Chào mừng đến với Triết học 101</h2>
+        <p>Trang web này dành riêng cho việc khám phá thế giới triết học hấp dẫn. Từ những người Hy Lạp cổ đại đến các nhà tư tưởng hiện đại, chúng ta sẽ đề cập đến những ý tưởng và nhân vật chính đã định hình sự hiểu biết của chúng ta về thế giới.</p>
+        <p>Sử dụng trang web này để ôn tập các khái niệm chính, tìm hiểu về các nhà triết học có ảnh hưởng nhất và kiểm tra kiến thức của bạn với các câu đố tương tác của chúng tôi.</p>
       </div>
     </section>
   );
@@ -127,50 +126,50 @@ const Branches: React.FC = () => {
   return (
     <section id="branches" className="p-5 bg-light">
       <div className="container">
-        <h2>Branches of Philosophy</h2>
+        <h2>Các nhánh của Triết học</h2>
         <div className="accordion" id="accordionExample">
           <div className="accordion-item">
             <h2 className="accordion-header" id="headingOne">
               <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Metaphysics (Siêu hình học)
+                Siêu hình học (Metaphysics)
               </button>
             </h2>
             <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div className="accordion-body">
-                <p>Metaphysics is the branch of philosophy that examines the fundamental nature of reality, including the relationship between mind and matter, between substance and attribute, and between potentiality and actuality.</p>
-                <strong>Core Concepts:</strong> Being, existence, reality, substance, time, space.<br />
-                <strong>Key Questions:</strong> What is reality? What is the nature of existence? What is the relationship between mind and body?<br />
-                <strong>Representative Philosophers:</strong> Parmenides, Plato, Aristotle, Descartes, Leibniz, Spinoza.
+                <p>Siêu hình học là nhánh triết học xem xét bản chất cơ bản của thực tại, bao gồm mối quan hệ giữa tâm và vật, giữa bản chất và thuộc tính, và giữa tiềm năng và hiện thực.</p>
+                <strong>Khái niệm cốt lõi:</strong> Tồn tại, hữu thể, thực tại, bản chất, thời gian, không gian.<br />
+                <strong>Câu hỏi chính:</strong> Thực tại là gì? Bản chất của sự tồn tại là gì? Mối quan hệ giữa tâm và thân là gì?<br />
+                <strong>Các triết gia tiêu biểu:</strong> Parmenides, Plato, Aristotle, Descartes, Leibniz, Spinoza.
               </div>
             </div>
           </div>
           <div className="accordion-item">
             <h2 className="accordion-header" id="headingTwo">
               <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Epistemology (Nhận thức luận)
+                Nhận thức luận (Epistemology)
               </button>
             </h2>
             <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
               <div className="accordion-body">
-                <p>Epistemology is the branch of philosophy concerned with the theory of knowledge. It questions what knowledge is and how it can be acquired, and the extent to which knowledge of any given subject or entity can be acquired.</p>
-                <strong>Core Concepts:</strong> Knowledge, belief, justification, truth, perception, reason.<br />
-                <strong>Key Questions:</strong> What is knowledge? How do we acquire knowledge? What is the difference between belief and knowledge?<br />
-                <strong>Representative Philosophers:</strong> Plato, Aristotle, Descartes, Locke, Hume, Kant.
+                <p>Nhận thức luận là nhánh triết học liên quan đến lý thuyết về tri thức. Nó đặt câu hỏi tri thức là gì và làm thế nào để có được nó, và mức độ tri thức có thể có được về bất kỳ chủ đề hoặc thực thể nào.</p>
+                <strong>Khái niệm cốt lõi:</strong> Tri thức, niềm tin, sự biện minh, chân lý, nhận thức, lý trí.<br />
+                <strong>Câu hỏi chính:</strong> Tri thức là gì? Làm thế nào chúng ta có được tri thức? Sự khác biệt giữa niềm tin và tri thức là gì?<br />
+                <strong>Các triết gia tiêu biểu:</strong> Plato, Aristotle, Descartes, Locke, Hume, Kant.
               </div>
             </div>
           </div>
           <div className="accordion-item">
             <h2 className="accordion-header" id="headingThree">
               <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Ethics (Đạo đức học)
+                Đạo đức học (Ethics)
               </button>
             </h2>
             <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
               <div className="accordion-body">
-                <p>Ethics, or moral philosophy, is a branch of philosophy that involves systematizing, defending, and recommending concepts of right and wrong conduct. It is often divided into three subject areas: meta-ethics, normative ethics, and applied ethics.</p>
-                <strong>Core Concepts:</strong> Good, evil, right, wrong, virtue, duty, happiness.<br />
-                <strong>Key Questions:</strong> What is the good life? What is the right thing to do? What is justice?<br />
-                <strong>Representative Philosophers:</strong> Socrates, Plato, Aristotle, Epicurus, Aquinas, Kant, Mill.
+                <p>Đạo đức học, hay triết học đạo đức, là một nhánh của triết học bao gồm việc hệ thống hóa, bảo vệ và đề xuất các khái niệm về hành vi đúng và sai. Nó thường được chia thành ba lĩnh vực chủ đề: siêu đạo đức học, đạo đức học chuẩn tắc và đạo đức học ứng dụng.</p>
+                <strong>Khái niệm cốt lõi:</strong> Tốt, xấu, đúng, sai, đức hạnh, nghĩa vụ, hạnh phúc.<br />
+                <strong>Câu hỏi chính:</strong> Cuộc sống tốt đẹp là gì? Điều đúng đắn cần làm là gì? Công lý là gì?<br />
+                <strong>Các triết gia tiêu biểu:</strong> Socrates, Plato, Aristotle, Epicurus, Aquinas, Kant, Mill.
               </div>
             </div>
           </div>
@@ -184,7 +183,7 @@ const Philosophers: React.FC<{ philosophers: typeof philosophersData }> = ({ phi
   return (
     <section id="philosophers" className="p-5">
       <div className="container">
-        <h2>Key Philosophers</h2>
+        <h2>Các triết gia tiêu biểu</h2>
         <div className="row">
           {philosophers.map((philosopher, index) => (
             <div className="col-md-4 mb-4" key={index}>
@@ -194,8 +193,8 @@ const Philosophers: React.FC<{ philosophers: typeof philosophersData }> = ({ phi
                   <h5 className="card-title">{philosopher.name}</h5>
                   <p className="card-text">{philosopher.bio}</p>
                   <ul className="list-group list-group-flush mt-auto">
-                    <li className="list-group-item"><strong>Major Works:</strong> <em>{philosopher.majorWorks}</em></li>
-                    <li className="list-group-item"><strong>Core Ideas:</strong> {philosopher.coreIdeas}</li>
+                    <li className="list-group-item"><strong>Tác phẩm chính:</strong> <em>{philosopher.majorWorks}</em></li>
+                    <li className="list-group-item"><strong>Ý tưởng cốt lõi:</strong> {philosopher.coreIdeas}</li>
                   </ul>
                   {philosopher.quiz.length > 0 && <Quiz questions={philosopher.quiz} />}
                 </div>
@@ -212,21 +211,21 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="p-5 bg-light">
       <div className="container">
-        <h2>Contact Us</h2>
+        <h2>Liên hệ chúng tôi</h2>
         <form>
           <div className="mb-3">
-            <label htmlFor="name" className="form-label">Name</label>
+            <label htmlFor="name" className="form-label">Tên</label>
             <input type="text" className="form-control" id="name" />
           </div>
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email address</label>
+            <label htmlFor="email" className="form-label">Địa chỉ email</label>
             <input type="email" className="form-control" id="email" />
           </div>
           <div className="mb-3">
-            <label htmlFor="message" className="form-label">Message</label>
+            <label htmlFor="message" className="form-label">Nội dung</label>
             <textarea className="form-control" id="message" rows={3}></textarea>
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button type="submit" className="btn btn-primary">Gửi</button>
         </form>
       </div>
     </section>
@@ -255,7 +254,7 @@ function App() {
         <Contact />
       </main>
       <footer className="bg-dark text-white text-center p-3">
-        <p>&copy; 2025 Philosophy 101</p>
+        <p>&copy; 2025 Triết học 101</p>
       </footer>
     </div>
   );
