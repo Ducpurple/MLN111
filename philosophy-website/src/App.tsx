@@ -1,6 +1,6 @@
-
 import React from 'react';
 import './App.css';
+import Concepts from './Concepts';
 
 const Header: React.FC = () => {
   return (
@@ -19,6 +19,9 @@ const Header: React.FC = () => {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#philosophers">Philosophers</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#concepts">Concepts</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#contact">Contact</a>
@@ -182,6 +185,7 @@ function App() {
         <Home />
         <Branches />
         <Philosophers />
+        <Concepts />
         <Contact />
       </main>
       <footer className="bg-dark text-white text-center p-3">
